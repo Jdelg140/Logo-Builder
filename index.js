@@ -1,6 +1,8 @@
-const inquirer = require("inquirer")
-const fs = require("fs")
-const { Circle, Square, Triangle } = require("./Lib/shapes.js")
+const inquirer = require("inquirer");
+const fs = require("fs");
+const { Circle, Square, Triangle } = require("./Lib/shapes.js");
+const Svg = require("./svg.js");
+
 
 const questions = [
     {
@@ -27,22 +29,44 @@ const questions = [
 ]
 
 inquirer.prompt(questions).then((answers) => {
-    const { text, textColor, shape, shapeColor } = answers;
-
+    const {shape, text, textColor, shapeColor} = answers;
+    let color;
     let logo;
     switch (shape) {
         case "Circle":
-            logo = new Circle(shapeColor,textColor,text,shape);
+            logo = new Circle(shapeColor);
+            color= new Circle(text,textColor)
+            console.log(logo.render());
             break;
         case "Square":
-            logo = new Square(shapeColor,textColor,text,shape);
+            logo = new Square(shapeColor);
             break;
         case "Triangle":
-            logo = new Triangle(shapeColor,textColor,text,shape);
+            logo = new Triangle(shapeColor);
+            color = new Triangle(text,textColor);
             break;
         default:
             console.log("Invalid shape selection");
             return;
-    }
+    };
+    
+
+    const svg = new Svg(color.render(text), logo.render(), color.render(textColor));
+
+    fs.writeFile("./Examples/logo.svg", svg.render(), (err) => {
+        if (err) {
+            console.error("Error creating logo.svg:", err);
+        } else {
+            console.log("Generated logo.svg");
+        }
+
+});
 })
+
+
+
+
+  
+module.exports= questions
+
 
