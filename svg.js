@@ -1,3 +1,5 @@
+const shapes= require("./Lib/shapes")
+
 class Svg {
     constructor(text, shape, textColor) {
       this.text = text;
@@ -6,10 +8,21 @@ class Svg {
     }
   
     render() {
-      return `<svg viewBox="0 0 200 200" width="300" height="200">
-                ${this.shape}
-                <text x="20" y="35" class="small">${this.text} ${this.textColor}</text>
-              </svg>`;
+      return `
+      <svg viewBox="0 0 200 200" width="300" height="200">
+        ${this.shape}
+        <style>
+          .heavy {
+            font:italic 40px serif;
+            text-anchor: middle;
+            alignment-baseline: middle;
+          }
+        </style>
+        <text x="100" y="130" class="heavy" fill="${this.textColor}">
+          ${this.text}
+        </text>
+      </svg>
+      `;
     }
   }
   

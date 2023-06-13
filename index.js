@@ -29,13 +29,11 @@ const questions = [
 ]
 
 inquirer.prompt(questions).then((answers) => {
-    const {shape, text, textColor, shapeColor} = answers;
-    let color;
+    const { shape, text, textColor, shapeColor } = answers;
     let logo;
     switch (shape) {
         case "Circle":
             logo = new Circle(shapeColor);
-            color= new Circle(text,textColor)
             console.log(logo.render());
             break;
         case "Square":
@@ -43,15 +41,14 @@ inquirer.prompt(questions).then((answers) => {
             break;
         case "Triangle":
             logo = new Triangle(shapeColor);
-            color = new Triangle(text,textColor);
             break;
         default:
             console.log("Invalid shape selection");
             return;
     };
-    
 
-    const svg = new Svg(color.render(text), logo.render(), color.render(textColor));
+
+    const svg = new Svg(text, logo.render(), textColor);
 
     fs.writeFile("./Examples/logo.svg", svg.render(), (err) => {
         if (err) {
@@ -60,13 +57,13 @@ inquirer.prompt(questions).then((answers) => {
             console.log("Generated logo.svg");
         }
 
-});
+    });
 })
 
 
 
 
-  
-module.exports= questions
+
+module.exports = questions
 
 

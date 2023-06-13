@@ -1,4 +1,15 @@
-<svg viewBox="0 0 200 200" width="300" height="200">
-                <polygon height="100%" width="100%" points="0,200 200,200 100,0" fill="green"/>
-                <text x="20" y="35" class="small"><polygon height="100%" width="100%" points="0,200 200,200 100,0" fill="DEL"/> <polygon height="100%" width="100%" points="0,200 200,200 100,0" fill="DEL"/></text>
-              </svg>
+
+      <svg viewBox="0 0 200 200" width="300" height="200">
+        <rect x="10" y="45" height="100%" width="100%" fill="green"/>
+        <style>
+          .heavy {
+            font:italic 40px serif;
+            text-anchor: middle;
+            alignment-baseline: middle;
+          }
+        </style>
+        <text x="100" y="130" class="heavy" fill="red">
+          DEL
+        </text>
+      </svg>
+      
