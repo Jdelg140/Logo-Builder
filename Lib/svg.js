@@ -1,14 +1,14 @@
-const shapes= require("./Lib/shapes")
+const shapes = require("./shapes")
 
 class Svg {
-    constructor(text, shape, textColor) {
-      this.text = text;
-      this.shape = shape;
-      this.textColor = textColor;
-    }
-  
-    render() {
-      return `
+  constructor(text, shape, textColor) {
+    this.text = text;
+    this.shape = shape;
+    this.textColor = textColor;
+  }
+
+  render() {
+    return `
       <svg viewBox="0 0 200 200" width="300" height="200">
         ${this.shape}
         <style>
@@ -23,8 +23,8 @@ class Svg {
         </text>
       </svg>
       `;
-    }
   }
-  
-  module.exports = Svg;
+}
+
+module.exports = Svg;
 
