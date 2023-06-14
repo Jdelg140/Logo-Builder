@@ -1,6 +1,6 @@
 
       <svg viewBox="0 0 200 200" width="300" height="200">
-        <rect x="10" y="45" height="100%" width="100%" fill="green"/>
+        <circle cx="100" cy="120" r="75" fill="red"/>
         <style>
           .heavy {
             font:italic 40px serif;
